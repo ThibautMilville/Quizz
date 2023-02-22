@@ -80,3 +80,15 @@ section {
     color: #F45838;
     text-transform: uppercase;
 }
+/* Page QCM */
+.qcm {
+    width: 50%;
+}
+.question {
+    margin: 10px 0;
+}
+.qcm form .style_btn {
+    padding: 10px 30px;
+    margin-top: 25px;
+    margin-left: -22px;
+}
