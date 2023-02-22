@@ -10,9 +10,9 @@
 <body>
     <!-- Menu -->
     <ul class="menu">
-        <a href="qcm.html">Refaire le QCM</a>
-        <a href="index.html">Changer de pseudo</a>
-        <a href="niveau.html">Changer de niveau</a>
+        <a href="qcm.php">Refaire le QCM</a>
+        <a href="index.php">Changer de pseudo</a>
+        <a href="niveau.php">Changer de niveau</a>
     </ul>
     <!-- Corps de la page -->
     <section class="pseudo">
