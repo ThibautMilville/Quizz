@@ -92,3 +92,25 @@ section {
     margin-top: 25px;
     margin-left: -22px;
 }
+/* Page résultats */
+.resultats h1 {
+    margin-bottom: 20px;
+    text-transform: uppercase;
+}
+.question_error{
+    font-weight: bold;
+    font-style: italic;
+}
+.reponse_vrai {
+    font-style: italic;
+    color: green;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+.note {
+    font-weight: 500;
+    margin-top: 20px;
+}
+.color {
+    color: #999;
+}
