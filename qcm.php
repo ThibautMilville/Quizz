@@ -7,7 +7,7 @@
     if(!isset($_SESSION['niveau'])){
         header('location:niveau.php'); // Si le niveau n'existe pas > redirection vers niveau.php
     }
-    $niveau = $_SESSION["niveau"];
+    $niveau = $_SESSION['niveau'];
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -24,31 +24,58 @@
         <section class="qcm">
             <form action="reponse.php" method="POST">
                 <?php
-                    // Liste des questions et des réponses
-                    $req_question = "SELECT * FROM questions WHERE niveau = 1 ORDER BY rand() LIMIT 5";
-                    // Exécution de la requête
-                    $res_question = mysqli_query($mysqli, $req_question);
-                    // Afficher les questions
-                        echo "<ol>";
-                        while($ligne_question =mysqli_fetch_assoc($res_question)) {
-                            $idq = $ligne_question['idq'];
-                            ?>
-                            <h3 class="question"><li><?=$ligne_question['libelleQ']?></li></h3>
-                            <?php
-                            // Afficher les réponses associées à ces questions
-                            $req_reponse = "SELECT * FROM reponses WHERE idq = $idq";
-                            // Exécuter la requête
-                            $res_reponse = mysqli_query($mysqli, $req_reponse);
-                            // Afficher les questions
-                            while($ligne_reponse = mysqli_fetch_assoc($res_reponse)) {
+                    if($_SESSION['niveau'] == 0) {
+                        // Liste des questions et des réponses
+                        $req_question = "SELECT * FROM questions WHERE niveau = 0 ORDER BY rand() LIMIT 5";
+                        // Exécution de la requête
+                        $res_question = mysqli_query($mysqli, $req_question);
+                        // Afficher les questions
+                            echo "<ol>";
+                            while($ligne_question =mysqli_fetch_assoc($res_question)) {
+                                $idq = $ligne_question['idq'];
                                 ?>
-                                <input type="radio" name="<?=$idq?>"
-                                value="<?=$ligne_reponse['idr']?>"
-                                required><?=$ligne_reponse['libeller']?><br>
+                                <h3 class="question"><li><?=$ligne_question['libelleQ']?></li></h3>
                                 <?php
+                                // Afficher les réponses associées à ces questions
+                                $req_reponse = "SELECT * FROM reponses WHERE idq = $idq";
+                                // Exécuter la requête
+                                $res_reponse = mysqli_query($mysqli, $req_reponse);
+                                // Afficher les questions
+                                while($ligne_reponse = mysqli_fetch_assoc($res_reponse)) {
+                                    ?>
+                                    <input type="radio" name="<?=$idq?>"
+                                    value="<?=$ligne_reponse['idr']?>"
+                                    required><?=$ligne_reponse['libeller']?><br>
+                                    <?php
+                                }
                             }
-                        }
-                        ?>
+                        } else if($_SESSION['niveau'] == 1) {
+                            // Liste des questions et des réponses
+                            $req_question = "SELECT * FROM questions WHERE niveau = 1 ORDER BY rand() LIMIT 5";
+                            // Exécution de la requête
+                            $res_question = mysqli_query($mysqli, $req_question);
+                            // Afficher les questions
+                                echo "<ol>";
+                                while($ligne_question =mysqli_fetch_assoc($res_question)) {
+                                    $idq = $ligne_question['idq'];
+                                    ?>
+                                    <h3 class="question"><li><?=$ligne_question['libelleQ']?></li></h3>
+                                    <?php
+                                    // Afficher les réponses associées à ces questions
+                                    $req_reponse = "SELECT * FROM reponses WHERE idq = $idq";
+                                    // Exécuter la requête
+                                    $res_reponse = mysqli_query($mysqli, $req_reponse);
+                                    // Afficher les questions
+                                    while($ligne_reponse = mysqli_fetch_assoc($res_reponse)) {
+                                        ?>
+                                        <input type="radio" name="<?=$idq?>"
+                                        value="<?=$ligne_reponse['idr']?>"
+                                        required><?=$ligne_reponse['libeller']?><br>
+                                        <?php
+                                    }
+                                }
+                            }    
+                            ?>
                 <input type="submit" value="Envoyer" class="style_btn">
             </form>
         </section>
