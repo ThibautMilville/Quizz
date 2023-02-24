@@ -20,11 +20,41 @@
         <h1>Résultat du QCM de
             <span class="change_color"><?=$_SESSION['name']?></span>
         </h1>
-        <p class="color">Tu t'es planté à la question 5 :</p>
-        <p class="question_error">Combien font 2 + 5</p>
-        <p class="color">Il fallait répondre</p>
-        <p class="reponse_vrai">7</p>
-        <p class="note">Tu as eu 14/20</p>
+        <?php
+            include "connect.php"; // Débuguer et refaire le code
+            $note = 0;
+            foreach($_POST as $cle => $val) {
+                // $cle représente idq (identificant de la question) et $val représente idr (identifiant de sa réponse)
+                // Cette requête nous permet d'afficher la bonne réponse
+                $req_bonne_reponse = "SELECT * FROM reponses WHERE idr = $val AND verite = 1";
+                // Exécution
+                $res_bonne_reponse = mysqli_query($mysqli, $req_bonne_reponse);
+                if(mysqli_num_row($res_bonne_reponse) > 0) {
+                    // Si cette requête retourne un nombre de lignes > 0 on ajoute 4 à la note
+                    $note = $note + 4;
+                } else {
+                    ?>
+                     <p class="color">Tu t'es trompé à la question <?=$cle?> :</p>
+                        <?php
+                        // Liste des questions qui ont été mal répondues
+                        $req_question_mal_repondue = "SELECT * FROM questions WHERE idq = $cle";
+                        $res_question_mal_repondue = mysqli_query($mysqli,$req_question_mal_repondue);
+                        $ligne_question_mal_repondue = mysqli_fetch_assoc($res_question_mal_repondue);
+                        ?>
+                     <p class="question_error"><?=$ligne_question_mal_repondue['libelleQ']?></p>
+                     <p class="color">Il fallait répondre :</p>
+                        <?php
+                        // Liste des vraies réponses
+                        $req_vraie_reponse = "SELECT * FROM reponses WHERE idq = $cle AND verite = 1";
+                        $res_vraie_reponse = mysqli_query($mysqli,$req_vraie_reponse);
+                        $ligne_vraie_reponse = mysqli_fetch_assoc($res_vraie_reponse);
+                        ?>
+                        <p class="reponse_vrai"><?=$ligne_vraie_reponse['libeller']?></p>;
+                    <?php
+                }
+            }
+        ?>
+        <p class="note">Tu as eu <span class="valeur_note"><?=$note?>/20 !</span></p>
     </section>
 </body>
 </html>
