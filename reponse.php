@@ -54,6 +54,16 @@
                 }
             }
         ?>
+        <?php
+            // Changer la couleur de la note
+            if($note < 10) {
+                echo "<style>.valeur_note{color:red;}</style>";
+            } else if ($note == 10) {
+                echo "<style>.valeur_note{color:orange}</style>";
+            } else {
+                echo "<style>.valeur_note{color:green}</style>";
+            }
+        ?>
         <p class="note">Tu as eu <span class="valeur_note"><?=$note?>/20 !</span></p>
     </section>
 </body>
