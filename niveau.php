@@ -7,6 +7,8 @@
         if(isset($_POST['niveau'])){
             // Enregistrer le niveau dans une variable session
             $_SESSION['niveau'] = $_POST['niveau'];
+            // Redirection vers la page QCM
+            header('location:qcm.php');
         } else {
             $error = "Veuillez choisir un niveau !";
         }
@@ -31,7 +33,19 @@
         <form action="niveau.php" method="POST">
             <p>Votre niveau actuel est :
                 <span class="change_color">
-                    Débutant
+                    <?php
+                    // Afficher le niveau du joueur avec la session
+                    if(isset($_SESSION['niveau'])){
+                        // Si la session 'niveau' existe :
+                        if($_SESSION['niveau'] == 1){
+                            echo "Confirmé";
+                        } else {
+                            echo "Débutant";
+                        }
+                    } else {
+                        echo "Aucun";
+                    }
+                    ?>
                 </span>
             </p>
             <p class="error">

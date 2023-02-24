@@ -1,3 +1,10 @@
+<?php
+    session_start();
+    // Vérifier si la variable de session name existe
+    if(!isset($_SESSION['name'])){
+        header('location:index.php'); // Si le pseudo n'existe pas > redirection vers index.php
+    }
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,7 +18,7 @@
     <?php include "menu.php" ?>
     <section class="resultats">
         <h1>Résultat du QCM de
-            <span class="change_color">ALICE</span>
+            <span class="change_color"><?=$_SESSION['name']?></span>
         </h1>
         <p class="color">Tu t'es planté à la question 5 :</p>
         <p class="question_error">Combien font 2 + 5</p>
