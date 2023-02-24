@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <?php include "menu.php" ?>
     <section class="qcm">
         <form action="" method="POST">
             <ol>

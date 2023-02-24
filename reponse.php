@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <?php include "menu.php" ?>
     <section class="resultats">
         <h1>Résultat du QCM de
             <span class="change_color">ALICE</span>

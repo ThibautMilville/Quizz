@@ -1,3 +1,17 @@
+<?php
+    session_start();
+    if(!isset($_SESSION['name'])) header('location:index.php');
+    // Vérifier le formulaire relatif au niveau
+    if(isset($_POST['button'])){
+        // Vérification pour savoir si le niveau a été choisi
+        if(isset($_POST['niveau'])){
+            // Enregistrer le niveau dans une variable session
+            $_SESSION['niveau'] = $_POST['niveau'];
+        } else {
+            $error = "Veuillez choisir un niveau !";
+        }
+    }
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,20 +22,24 @@
     <title>Niveau page</title>
 </head>
 <body>
+    <?php include "menu.php" ?>
     <section class="niveau">
         <h4>Bonjour
-            <span class="change_color">ALICE</span> , choisissez d'abord
+            <span class="change_color"><?=$_SESSION['name'] ?></span> , choisissez d'abord
             le niveau des questions :
         </h4>
-        <form method="POST">
+        <form action="niveau.php" method="POST">
             <p>Votre niveau actuel est :
                 <span class="change_color">
                     Débutant
                 </span>
             </p>
+            <p class="error">
+                <?php if(isset($error)) echo $error; ?>
+            </p>
             <div class="choices">
                 <div class="choice">
-                    <input type="radio" name="niveau" value="0">Confirmé
+                    <input type="radio" name="niveau" value="0">Débutant
                 </div>
                 <div class="choice">
                     <input type="radio" name="niveau" value="1">Confirmé

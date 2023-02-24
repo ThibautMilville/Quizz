@@ -62,8 +62,8 @@ section {
     margin-top: 10px;
 }
 .pseudo form input {
-    border-bottom: 1px solid #999;
     border: 0;
+    border-bottom: 1px solid #999;
     margin: 20px 0;
     outline: 0;
     padding: 10px 0;
@@ -88,9 +88,9 @@ section {
     margin: 10px 0;
 }
 .qcm form .style_btn {
-    padding: 10px 30px;
-    margin-top: 25px;
     margin-left: -22px;
+    margin-top: 25px;
+    padding: 10px 30px;
 }
 /* Page résultats */
 .resultats h1 {
@@ -98,12 +98,12 @@ section {
     text-transform: uppercase;
 }
 .question_error{
-    font-weight: bold;
     font-style: italic;
+    font-weight: bold;
 }
 .reponse_vrai {
-    font-style: italic;
     color: green;
+    font-style: italic;
     font-weight: bold;
     margin-bottom: 10px;
 }
