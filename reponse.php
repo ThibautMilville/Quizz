@@ -15,21 +15,21 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <?php include "menu.php" ?>
+    <?php include "menu.php"; ?>
     <section class="resultats">
         <h1>Résultat du QCM de
             <span class="change_color"><?=$_SESSION['name']?></span>
         </h1>
         <?php
-            include "connect.php"; // Débuguer et refaire le code
+            include "connect.php";
             $note = 0;
-            foreach($_POST as $cle => $val) {
+            foreach($_POST as $cle=>$val) {
                 // $cle représente idq (identificant de la question) et $val représente idr (identifiant de sa réponse)
                 // Cette requête nous permet d'afficher la bonne réponse
                 $req_bonne_reponse = "SELECT * FROM reponses WHERE idr = $val AND verite = 1";
                 // Exécution
                 $res_bonne_reponse = mysqli_query($mysqli, $req_bonne_reponse);
-                if(mysqli_num_row($res_bonne_reponse) > 0) {
+                if(mysqli_num_rows($res_bonne_reponse) > 0) {
                     // Si cette requête retourne un nombre de lignes > 0 on ajoute 4 à la note
                     $note = $note + 4;
                 } else {
@@ -49,7 +49,7 @@
                         $res_vraie_reponse = mysqli_query($mysqli,$req_vraie_reponse);
                         $ligne_vraie_reponse = mysqli_fetch_assoc($res_vraie_reponse);
                         ?>
-                        <p class="reponse_vrai"><?=$ligne_vraie_reponse['libeller']?></p>;
+                        <p class="reponse_vrai"><?=$ligne_vraie_reponse['libeller']?></p>
                     <?php
                 }
             }
