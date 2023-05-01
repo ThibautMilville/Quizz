@@ -1,8 +1,8 @@
 <?php
     session_start();
-    // Vérifier si la variable de session name existe
+    // CHECK IF THE SESSION VARIABLE NAME EXISTS
     if(!isset($_SESSION['name'])){
-        header('location:index.php'); // Si le pseudo n'existe pas > redirection vers index.php
+        header('location:index.php'); // IF THE PSEUDO DOESN'T EXIST > REDIRECTION TO INDEX.PHP
     }
 ?>
 <!DOCTYPE html>
@@ -23,18 +23,20 @@
         <?php
             include "connect.php";
             $note = 0;
+            $i = 0;
             foreach($_POST as $cle=>$val) {
                 // $cle représente idq (identificant de la question) et $val représente idr (identifiant de sa réponse)
                 // Cette requête nous permet d'afficher la bonne réponse
                 $req_bonne_reponse = "SELECT * FROM reponses WHERE idr = $val AND verite = 1";
                 // Exécution
                 $res_bonne_reponse = mysqli_query($mysqli, $req_bonne_reponse);
+                $i++;
                 if(mysqli_num_rows($res_bonne_reponse) > 0) {
                     // Si cette requête retourne un nombre de lignes > 0 on ajoute 4 à la note
                     $note = $note + 4;
                 } else {
                     ?>
-                     <p class="color">Tu t'es trompé à la question <?=$cle?> :</p>
+                     <p class="color">Tu t'es trompé à la question <?=$i?> :</p>
                         <?php
                         // Liste des questions qui ont été mal répondues
                         $req_question_mal_repondue = "SELECT * FROM questions WHERE idq = $cle";

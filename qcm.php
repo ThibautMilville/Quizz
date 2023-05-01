@@ -24,6 +24,7 @@ $niveau = $_SESSION['niveau'];
 	<?php include "menu.php" ?>
 	<?php include "connect.php" ?>
 	<section class="qcm">
+		<!-- DISPLAY THE QCM -->
 		<form action="reponse.php" method="POST">
 			<?php
 			// IF THE PLAYER LEVEL IS 0
