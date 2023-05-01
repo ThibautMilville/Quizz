@@ -48,7 +48,7 @@ $niveau = $_SESSION['niveau'];
 					// DISPLAY THE QUESTIONS
 					while ($ligne_reponse = mysqli_fetch_assoc($res_reponse)) {
 					?>
-						<input type="radio" name="<?= $idq ?>" value="<?= $ligne_reponse['idr'] ?>" required><?= $ligne_reponse['libeller'] ?><br>
+						<input type="radio" name="<?= $idq ?>" value="<?= $ligne_reponse['idr'] ?>" required><?= ' ' . $ligne_reponse['libeller'] ?><br>
 					<?php
 					}
 				}
@@ -64,7 +64,9 @@ $niveau = $_SESSION['niveau'];
 				while ($ligne_question = mysqli_fetch_assoc($res_question)) {
 					$idq = $ligne_question['idq'];
 					?>
-					<h3 class="question"><li><?= $ligne_question['libelleQ'] ?></li></h3>
+					<h3 class="question">
+						<li><?= $ligne_question['libelleQ'] ?></li>
+					</h3>
 					<?php
 					// DISPLAY THE ANSWERS ASSOCIATED WITH THESE QUESTIONS
 					$req_reponse = "SELECT * FROM reponses WHERE idq = $idq";
@@ -73,7 +75,7 @@ $niveau = $_SESSION['niveau'];
 					// DISPLAY THE QUESTIONS
 					while ($ligne_reponse = mysqli_fetch_assoc($res_reponse)) {
 					?>
-						<input type="radio" name="<?= $idq ?>" value="<?= $ligne_reponse['idr'] ?>" required><?= $ligne_reponse['libeller'] ?><br>
+						<input type="radio" name="<?= $idq ?>" value="<?= $ligne_reponse['idr'] ?>" required><?= ' ' . $ligne_reponse['libeller'] ?><br>
 			<?php
 					}
 				}
