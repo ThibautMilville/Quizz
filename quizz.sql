@@ -67,7 +67,7 @@ INSERT INTO `questions` (`idq`, `libelleQ`, `niveau`) VALUES
 (27, 'Lequel de ces jeux vidéos animaliers n\'existe pas ?', 0),
 (28, 'Lequel de ces jeux vidéos de simulation n\'existe pas ?', 0),
 (29, 'Qui est le personnage principal du manga Dr. Stone ?', 0),
-(30, 'Lequel de ces joueurs ne fait pas parti de l\'équipe française d Overwatch ?', 0),
+(30, 'Lequel de ces joueurs ne fait pas parti de l\'équipe française d\'Overwatch ?', 0),
 (31, 'Lequel de ces jeux n\'est pas du style dit RogueLike ?', 0),
 (32, 'Combien de tomes compte la série de livres Harry Potter ?', 0),
 (33, 'Laquelle de ces consoles a été la moins vendue ?', 0),
