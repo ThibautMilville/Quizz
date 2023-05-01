@@ -1,7 +1,7 @@
 <?php
-    // Démarrer la session
+    // START THE SESSION
     session_start();
-    // Vérifier l'envoi du formulaire
+    // CHECK IF THE FORM HAS BEEN SUBMITTED
     if(isset($_POST['button'])){
         if(isset($_POST['name']) && $_POST['name'] != ""){
             // Créer une variable session qui va stocker le pseudo
