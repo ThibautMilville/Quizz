@@ -1,0 +1,119 @@
+/* Général */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500&display=swap');
+* {
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0;
+}
+body {
+    align-items: center;
+    background-color: #F4F5F3;
+    display: flex;
+    justify-content: center;
+    letter-spacing: 0.5px;
+}
+section {
+    background-color: white;
+    border-radius: 6px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    margin: 150px 0px;
+    padding: 60px;
+}
+.style_btn {
+    background-color: #F45838;
+    border: 0;
+    color: white;
+    cursor: pointer;
+    letter-spacing: 1px;
+    padding: 10px 20px;
+    text-transform: uppercase;
+}
+.error {
+    color: red;
+}
+/* Page menu */
+.menu {
+    background-color: white;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: center;
+    padding: 20px 10px;
+    position: absolute;
+    top: 0;
+    width: 100%;
+}
+.menu a {
+    color: #999;
+    letter-spacing: 1px;
+    padding: 0 20px;
+    text-decoration: 0;
+    text-transform: uppercase;
+    transition: color 0.5s;
+}
+.menu a:hover {
+    color: #F45838;
+}
+/* Page index */
+.pseudo form {
+    display: flex;
+    flex-direction: column;
+}
+.pseudo form label {
+    margin-top: 10px;
+}
+.pseudo form input {
+    border: 0;
+    border-bottom: 1px solid #999;
+    margin: 20px 0;
+    outline: 0;
+    padding: 10px 0;
+    width: 350px;
+}
+/* Page niveau */
+.choice {
+    margin: 10px 0;
+}
+.choice input[type="radio"] {
+    margin-right: 8px;
+}
+.change_color {
+    color: #F45838;
+    text-transform: uppercase;
+}
+/* Page QCM */
+.qcm {
+    width: 50%;
+}
+.question {
+    margin: 10px 0;
+}
+.qcm form .style_btn {
+    margin-left: -22px;
+    margin-top: 25px;
+    padding: 10px 30px;
+}
+/* Page résultats */
+.resultats h1 {
+    margin-bottom: 20px;
+    text-transform: uppercase;
+}
+.question_error{
+    font-style: italic;
+    font-weight: bold;
+}
+.reponse_vrai {
+    color: green;
+    font-style: italic;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+.note {
+    font-weight: 500;
+    margin-top: 20px;
+}
+.color {
+    color: #999;
+}
